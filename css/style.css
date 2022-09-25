@@ -341,6 +341,10 @@ body {
   display: none;
 }
 
+body.lock {
+  overflow: hidden;
+}
+
 .footer {
   background-color: #171717;
 }
@@ -773,9 +777,9 @@ body {
   .menu__body {
     position: absolute;
     top: -60px;
-    left: -120px;
-    width: 100vw;
-    height: 100vh;
+    left: -140px;
+    width: 110vw;
+    height: 110vh;
     background-color: #111111;
     -webkit-transform: translateX(-100%);
         -ms-transform: translateX(-100%);
@@ -783,6 +787,7 @@ body {
     -webkit-transition: all 0.5s ease 0s;
     -o-transition: all 0.5s ease 0s;
     transition: all 0.5s ease 0s;
+    z-index: 4;
   }
 
   .menu__body.open {
