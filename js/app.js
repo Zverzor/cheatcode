@@ -428,62 +428,6 @@
             body.classList.add("lock");
         }
     }));
-    if (document.querySelector(".swiper")) {
-        function slider({container, slide, wrapper, field}) {
-            const slides = document.querySelectorAll(slide), slider = document.querySelector(container), slidesWrapper = document.querySelector(wrapper), slidesField = document.querySelector(field), width = window.getComputedStyle(slidesWrapper).width;
-            let slideIndex = 1;
-            let offset = 0;
-            slidesField.style.width = 100 * slides.length + "%";
-            slidesField.style.display = "flex";
-            slidesField.style.transition = "0.5s all";
-            slidesWrapper.style.overflow = "hidden";
-            slides.forEach((slide => {
-                slide.style.width = width;
-            }));
-            const indicators = document.createElement("ol"), dots = [];
-            indicators.classList.add("carusel-indicators");
-            indicators.style.cssText = `\n  position: absolute;\n  right: 0;\n  bottom: 100px;\n  left: 0;\n  z-index: 15;\n  display: flex;\n  justify-content: center;\n  margin-right: 15%;\n  margin-left: 15%;\n  list-style: none;\n  `;
-            slider.append(indicators);
-            for (let i = 0; i < slides.length; i++) {
-                let dot = document.createElement("li");
-                dot.setAttribute("data-slide-to", i + 1);
-                dot.style.cssText = `\n    box-sizing: content-box;\n    flex: 0 1 auto;\n    width: 64px;\n    height: 7px;\n    margin-right: 3px;\n    margin-left: 3px;\n    cursor: pointer;\n    background-color: #4E4E4E;\n    background-clip: padding-box;\n    border-top: 10px solid transparent;\n    border-bottom: 10px solid transparent;\n    opacity: 1;\n    transition: opacity .6s ease;\n    `;
-                if (0 == i) dot.style.backgroundColor = "#FFDB59";
-                indicators.append(dot);
-                dots.push(dot);
-            }
-            function currentDot() {
-                dots.forEach((dot => dot.style.backgroundColor = "#4E4E4E"));
-                dots[slideIndex - 1].style.backgroundColor = "#FFDB59";
-            }
-            function deleteNotDigits(str) {
-                return +str.replace(/\D/g, "");
-            }
-            dots.forEach((dot => {
-                dot.addEventListener("click", (e => {
-                    const slideTo = e.target.getAttribute("data-slide-to");
-                    slideIndex = slideTo;
-                    offset = deleteNotDigits(width) * (slideTo - 1);
-                    slidesField.style.transform = `translateX(-${offset}px)`;
-                    currentDot();
-                    clearInterval(interval);
-                }));
-            }));
-            function loopAnimation() {
-                if (offset === deleteNotDigits(width) * (slides.length - 1)) offset = 0; else if (offset <= deleteNotDigits(width) * (slides.length - 2)) offset += deleteNotDigits(width);
-                slidesField.style.transform = `translateX(-${offset}px)`;
-                if (slideIndex === slides.length) slideIndex = 1; else if (slideIndex <= slides.length - 1) slideIndex++;
-                currentDot();
-            }
-            const interval = setInterval(loopAnimation, 3e3);
-        }
-        slider({
-            slide: ".swiper-slide",
-            container: ".swiper",
-            wrapper: ".swiper-wrapper",
-            field: ".slider-inner"
-        });
-    }
     const checkBoxes = document.querySelectorAll(".roundedOne input");
     if (checkBoxes) checkBoxes.forEach((item => {
         item.addEventListener("input", (() => {
