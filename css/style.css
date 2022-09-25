@@ -1887,6 +1887,10 @@ body.lock {
 }
 
 @media (max-width: 29.99875em) {
+  .sidebar__body {
+    max-width: 375px;
+  }
+
   .sidebar__agree {
     font-size: 1.125rem;
   }
