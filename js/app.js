@@ -416,14 +416,16 @@
             }));
         }
     }), 0);
-    const menuIcon = document.querySelector(".icon-menu"), menuBody = document.querySelector(".menu__body");
+    const menuIcon = document.querySelector(".icon-menu"), menuBody = document.querySelector(".menu__body"), body = document.querySelector("body");
     menuIcon.addEventListener("click", (() => {
         if (menuBody.classList.contains("open")) {
             menuIcon.classList.remove("open");
             menuBody.classList.remove("open");
+            body.classList.remove("lock");
         } else {
             menuBody.classList.add("open");
             menuIcon.classList.add("open");
+            body.classList.add("lock");
         }
     }));
     function slider({container, slide, wrapper, field}) {
