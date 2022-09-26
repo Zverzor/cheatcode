@@ -437,14 +437,6 @@
             item.checked = true;
         }));
     }));
-    const bareer = document.querySelector(".single-cheat__block");
-    if (bareer.scrollTop > 200) console.log("fsdfljsdnflj");
-    let script_parent = document.querySelector(".sidebar").parentElement;
-    while (script_parent) {
-        const hasOverflow = getComputedStyle(script_parent).overflow;
-        if ("visible" !== hasOverflow) console.log(hasOverflow, script_parent);
-        script_parent = script_parent.parentElement;
-    }
     window["FLS"] = true;
     assHole();
 })();
